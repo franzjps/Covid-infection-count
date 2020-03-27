@@ -2,9 +2,11 @@ const express = require('express')
 const nunjucks = require('nunjucks')
 
 const port = 2020
-const dirView = __dirname + '/data/view' // Path to view directory
+const dirView = __dirname + '/data/public/view' // Path to view directory
 
 const app = express()
+
+app.use(express.static(__dirname + '/data/public'));
 
 let loaderFsNunjucks = new nunjucks.FileSystemLoader(dirView, {
     "watch": true,
@@ -17,6 +19,12 @@ nunjucksEnv.express(app) // Hook up express and nunjucks
 app.get('/', (req,res) => {
     
     res.render('home.html')
+    
+})
+
+app.get('/carousel', (req,res) => {
+    
+    res.render('carousel.html')
     
 })
 
