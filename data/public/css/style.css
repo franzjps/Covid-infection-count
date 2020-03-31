@@ -1,3 +1,6 @@
+body {
+  color: black;
+}
 ul {
     list-style-type: none;
     margin: 0;
@@ -36,4 +39,9 @@ ul {
 img {
   height: 900px;
   width: 500;
+}
+
+.card {
+  margin: 30px;
+  padding: 25px;
 }
