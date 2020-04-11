@@ -2,6 +2,7 @@ const express = require('express')
 const nunjucks = require('nunjucks')
 const session = require('express-session')
 const bodyParser = require('body-parser')
+const axios = require('axios');
 
 const port = 2020
 const dirView = __dirname + '/data/public/view' // Path to view directory
@@ -32,6 +33,11 @@ nunjucksEnv.express(app) // Hook up express and nunjucks
 
 app.get('/', (req,res) => {
     
+    if (req.session.login) {
+        return res.redirect('/secured')
+    }
+
+
     res.render('home.html')
     
 })
@@ -46,6 +52,31 @@ app.get('/login', (req,res) => {
     
     res.render('login.html')
     
+})
+
+app.get('/news', (req,res) => {
+    async function status(contentType = 'json', baseUrl = 'http://covid-rest.herokuapp.com/?fbclid=IwAR0ib1MNHRPcTcFy4hANx3iEMGA8pyrw-Kkb4TTsypq6Yv22kZ7NSqZF3p0') {
+        try {
+            let accept = 'application/json'
+
+            let response = await axios.get(`${baseUrl}/status`, {
+                headers: {
+                    'Accept': accept
+                }
+            });
+
+            let responses = response.data.data;
+
+            // console.log(responses)
+
+            res.render('news.html', {responses: responses})
+
+        } catch (err) {
+            throw trimError(err)
+        }
+    }
+
+    console.log(status())
 })
 
 app.post('/login', (req,res) => {
@@ -65,7 +96,13 @@ app.get('/secured', (req, res) => {
     if (!req.session.login) {
             return res.redirect('/login')
     }
-    res.render('home.html')
+    res.render('secured.html')
+})
+
+
+app.get('/logout', (req, res) => {
+    req.session.login = false
+    res.redirect('/')
 })
 
 app.listen(port, () => console.log(`app is running on ${port}`))

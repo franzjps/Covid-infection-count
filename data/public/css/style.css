@@ -45,3 +45,23 @@ img {
   margin: 30px;
   padding: 25px;
 }
+
+.newCase {
+  background-color: #ff4d4d;
+  color: black;
+}
+
+.totDeath{
+  background-color: red;
+  color: black;
+}
+
+.newDeath{
+  background-color: black;
+  color: white;
+}
+
+.recovered{
+  background-color: #9aff9a;
+  color: black;
+}

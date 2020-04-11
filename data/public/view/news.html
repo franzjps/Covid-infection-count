@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>covid-practice</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <ul>
+        <li><a class="active" href="/">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="secured">Login</a></li>
+    </ul>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mr-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Country Name</th>
+                        <th>Total Cases</th>
+                        <th class="newCase">New Cases</th>
+                        <th class="totDeath">Total Death</th>
+                        <th class="newDeath">New Death</th>
+                        <th class="recovered">Total Recovered</th>
+                        <th>Active Cases</th>
+                        <th>Critical Cases</th>
+                        <th>Total Cases Per Million</th>
+                        <th>Total Death Per Million</th>
+                    </tr>
+                </thead>
+            {% for response in responses%}
+                <tbody>
+                    <tr>
+                        <td>{{response.country_name | capitalize}}</td>
+                        <td>{{response.total_cases}}</td>
+                        <td class="newCase">{{response.new_cases}}</td>
+                        <td class="totDeath">{{response.total_death}}</td>
+                        <td class="newDeath">{{response.new_death}}</td>
+                        <td class="recovered">{{response.total_recovered}}</td>
+                        <td>{{response.active_cases}}</td>
+                        <td>{{response.critical_cases}}</td>
+                        <td>{{response.total_cases_per_million}}</td>
+                        <td>{{response.total_death_per_million}}</td>
+                    </tr> 
+                </tbody>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+</body>
+</html>
