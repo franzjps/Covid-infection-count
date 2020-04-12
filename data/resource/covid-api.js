@@ -2,11 +2,11 @@
 const axios = require('axios');
 
 
-async function status(contentType = 'json', baseUrl = 'http://covid-rest.herokuapp.com/?fbclid=IwAR0ib1MNHRPcTcFy4hANx3iEMGA8pyrw-Kkb4TTsypq6Yv22kZ7NSqZF3p0') {
+async function status(contentType = 'json', baseUrl = 'https://coronavirus-19-api.herokuapp.com/countries') {
   try {
       let accept = 'application/json'
 
-      let response = await axios.get(`${baseUrl}/status`, {
+      let response = await axios.get(`${baseUrl}`, {
           headers: {
               'Accept': accept
           }
@@ -14,14 +14,15 @@ async function status(contentType = 'json', baseUrl = 'http://covid-rest.herokua
 
       let responses = response.data;
 
-      // console.log(responses.data[1].country_name)
+    //   console.log(responses)
 
-      return responses.data[1].country_name;
+      return responses
   } catch (err) {
-      throw trimError(err)
+      console.log(err)
   }
 }
   let statuses = status()
+
   console.log(statuses);
 
-  // module.exports = {status: status}
+  module.exports = {statuses: statuses}

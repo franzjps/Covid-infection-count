@@ -3,7 +3,7 @@
 {% block doc %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 mr-auto">
+        <div class="col-lg-12 mr-auto">
             <table class="table">
                 <thead>
                     <tr>
@@ -22,19 +22,35 @@
             {% for response in responses%}
                 <tbody>
                     <tr>
-                        <td>{{response.country_name | capitalize}}</td>
-                        <td>{{response.total_cases}}</td>
-                        <td class="newCase">{{response.new_cases}}</td>
-                        <td class="totDeath">{{response.total_death}}</td>
-                        <td class="newDeath">{{response.new_death}}</td>
-                        <td class="recovered">{{response.total_recovered}}</td>
-                        <td>{{response.active_cases}}</td>
-                        <td>{{response.critical_cases}}</td>
-                        <td>{{response.total_cases_per_million}}</td>
-                        <td>{{response.total_death_per_million}}</td>
+                        <td><a class="linkInfo" href="https://coronavirus-19-api.herokuapp.com/countries/{{response.country}}">i</a> {{response.country | capitalize}}</td>
+                        <td>{{response.cases}}</td>
+                        <td class="newCase">{{response.todayCases}}</td>
+                        <td class="totDeath">{{response.deaths}}</td>
+                        <td class="newDeath">{{response.todayDeaths}}</td>
+                        <td class="recovered">{{response.recovered}}</td>
+                        <td>{{response.active}}</td>
+                        <td>{{response.critical}}</td>
+                        <td>{{response.casesPerOneMillion}}</td>
+                        <td>{{response.deathsPerOneMillion}}</td>
                     </tr> 
                 </tbody>
             {% endfor %}
+
+                <tbody>
+                    <tr>
+                        <td><a class="linkInfo" href="{{responses.country}}">i</a> {{responses.country | capitalize}}</td>
+                        <td>{{responses.cases}}</td>
+                        <td class="newCase">{{responses.todayCases}}</td>
+                        <td class="totDeath">{{responses.deaths}}</td>
+                        <td class="newDeath">{{responses.todayDeaths}}</td>
+                        <td class="recovered">{{responses.recovered}}</td>
+                        <td>{{responses.active}}</td>
+                        <td>{{responses.critical}}</td>
+                        <td>{{responses.casesPerOneMillion}}</td>
+                        <td>{{responses.deathsPerOneMillion}}</td>
+                    </tr> 
+                </tbody>
+
             </table>
         </div>
     </div>

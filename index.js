@@ -4,6 +4,9 @@ const session = require('express-session')
 const bodyParser = require('body-parser')
 const axios = require('axios');
 
+// internal module
+const covidApi = require('./data/resource/covid-api');
+
 const port = 2020
 const dirView = __dirname + '/data/public/view' // Path to view directory
 
@@ -55,18 +58,18 @@ app.get('/login', (req,res) => {
 })
 
 app.get('/news', (req,res) => {
-    async function status(contentType = 'json', baseUrl = 'http://covid-rest.herokuapp.com/?fbclid=IwAR0ib1MNHRPcTcFy4hANx3iEMGA8pyrw-Kkb4TTsypq6Yv22kZ7NSqZF3p0') {
+    async function status(contentType = 'json', baseUrl = 'https://coronavirus-19-api.herokuapp.com/countries') {
         try {
             let accept = 'application/json'
 
-            let response = await axios.get(`${baseUrl}/status`, {
+            let response = await axios.get(`${baseUrl}`, {
                 headers: {
                     'Accept': accept
                 }
             });
 
-            let responses = response.data.data;
-
+            let responses = response.data;
+                
             // console.log(responses)
 
             res.render('news.html', {responses: responses})
@@ -78,6 +81,7 @@ app.get('/news', (req,res) => {
 
     console.log(status())
 })
+
 
 app.post('/login', (req,res) => {
     

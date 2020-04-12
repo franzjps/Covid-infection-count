@@ -1,34 +1,10 @@
 body {
   color: black;
 }
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: black;
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  li a:hover {
-    background-color: #111;
-  }
-
 /* //carousel */
 
 .carousel{
-  background: black;
+  background: white;
 }
 .carousel-item{
   text-align: center;
@@ -64,4 +40,65 @@ img {
 .recovered{
   background-color: #9aff9a;
   color: black;
+}
+
+.linkInfo{
+  border: 2px solid rgb(0, 68, 255);
+  border-radius: 50px;
+  padding-left: 6px;
+  padding-right: 6px;
+  font-size: 12px;
+}
+
+/* nav */
+
+.icon-bar {
+  width: 100%;
+  background-color: #555;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  z-index: 9;
+}
+
+.icon-bar a {
+  float: left;
+  width: 20%;
+  text-align: center;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 36px;
+}
+
+.icon-bar a:hover {
+  background-color: #000;
+}
+
+body {margin:0;}
+
+.icon-bar {
+  width: 100%;
+  background-color: white;
+  overflow: auto;
+}
+
+.icon-bar a {
+  float: left;
+  width: 20%;
+  text-align: center;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+  color: black;
+  font-size: 36px;
+}
+
+.icon-bar a:hover {
+  background-color: rgb(214, 214, 214);
+}
+
+/* container */
+
+.container-fluid{
+  margin-top: 79px;
 }
