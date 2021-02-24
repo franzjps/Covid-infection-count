@@ -1,2 +1,2 @@
-# covid-practice
-practicing my node js skill
+# Covid infection Tracker
+
